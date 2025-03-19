@@ -5,6 +5,8 @@ const wholeCard=document.querySelector(".whole_card");
 if(localStorage.getItem("darkMode")=="enabled"){
     wholeCard.classList.add("dark-mode");
     darkModeBtn.textContent="☀️ Light Mode";
+    darkModeBtn.style.backgroundColor="white";
+    darkModeBtn.style.color="black";
    
 }
 
@@ -61,36 +63,59 @@ window.addEventListener("load", () => {
     animateNumber(shares, 0, 16, 800);
 });
 
-// Fix for buttons and profile pic animation getting stuck on mobile
-function resetAnimation(element) {
-    element.style.transform = "none";
+
+
+const messageBtn = document.querySelector(".subscribe button:last-of-type"); // "Message" button
+const popup = document.getElementById("messagePopup");
+const closePopup = document.getElementById("closePopup");
+const sendMessage = document.getElementById("sendMessage");
+const messageInput = document.getElementById("messageInput");
+
+// Show pop-up when "Message" button is clicked
+messageBtn.addEventListener("click", () => {
+    popup.style.display = "flex"; // Show the pop-up
+});
+
+// Close pop-up when "Close" button is clicked
+closePopup.addEventListener("click", () => {
+    popup.style.display = "none"; // Hide the pop-up
+});
+
+// Send message (For now, just an alert – you can add backend later)
+sendMessage.addEventListener("click", () => {
+    if (messageInput.value.trim() === "") {
+        alert("Please type a message first!");
+        return;
+    }
+    alert(`Message sent: "${messageInput.value}"`);
+    messageInput.value = ""; // Clear input field
+    popup.style.display = "none"; // Close pop-up
+});
+
+// Close pop-up if user clicks outside the box
+popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+        popup.style.display = "none";
+    }
+});
+
+const subscribeBtn = document.querySelector(".subscribe button");
+
+// Check if the user is already subscribed (from local storage)
+if (localStorage.getItem("subscribed") === "true") {
+    subscribeBtn.textContent = "Unsubscribe";
+    subscribeBtn.style.backgroundColor = "red";
 }
 
-// Profile Picture Click Animation Fix
-profilePic.addEventListener("click", () => {
-    profilePic.style.transform = "rotate(5deg) scale(1.1)";
-    setTimeout(() => resetAnimation(profilePic), 200); // Reset after 200ms
+// When the user clicks the button, toggle subscribe state
+subscribeBtn.addEventListener("click", () => {
+    if (subscribeBtn.textContent === "Subscribe") {
+        subscribeBtn.textContent = "Unsubscribe";
+        subscribeBtn.style.backgroundColor = "red";
+        localStorage.setItem("subscribed", "true"); // Save state
+    } else {
+        subscribeBtn.textContent = "Subscribe";
+        subscribeBtn.style.backgroundColor = "rgb(4, 69, 247)";
+        localStorage.setItem("subscribed", "false"); // Save state
+    }
 });
-
-// Function to reset animation
-function resetAnimation(element) {
-    element.style.transform = "none";
-}
-
-// Fix for profile picture getting stuck
-profilePic.addEventListener("click", () => {
-    profilePic.style.transform = "rotate(5deg) scale(1.1)";
-    setTimeout(() => resetAnimation(profilePic), 200);
-});
-
-// Select all buttons with class "subscribe"
-const subscribeButtons = document.querySelectorAll(".subscribe");
-
-// Apply animation fix to each button
-subscribeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-        button.style.transform = "scale(0.9)";
-        setTimeout(() => resetAnimation(button), 200);
-    });
-});
-

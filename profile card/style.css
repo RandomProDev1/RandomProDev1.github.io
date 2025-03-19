@@ -29,39 +29,36 @@ body{
     background-image: url(golbax.jpg);
     border-radius: 90%;
     background-position: center;
-    object-fit: contain;
+    object-fit: cover;
     box-shadow: 5px 5px 15px rgba(2, 95, 255, 0.852);
     margin-bottom: 10px;
 }
 
 .icons-social img{
     height: 40px;
-    margin:10px 2px 0px 2px;
+    margin:10px 8px;
 }
 
 .subscribe button{
     margin: 15px 10px;
-    padding: 12px 20px; /* Adds space inside the button */
-    font-size: 16px; /* Adjust text size for readability */
-    border-radius: 10px; /* Optional: Rounds the edges */
-        background-color: rgb(4, 69, 247); /* Nice blue color */
-        color: white; /* White text for contrast */
-        border: none; /* Remove borders for a cleaner look */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    padding: 12px 20px; 
+    font-size: 16px; 
+    border-radius: 10px; 
+        background-color: rgb(4, 69, 247); 
+        color: white; 
+        border: none; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
         
         
 }
 .subscribe button:hover {
-    background-color: rgb(3, 54, 200); /* Slightly darker blue on hover */
+    background-color: rgb(3, 54, 200); 
     transform: scale(1.05); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     transition: all 0.3s ease; 
 }
 
-.subscribe button:focus {
-    outline: 2px solid rgb(3, 54, 200); 
-    outline-offset: 2px; 
-}
+
 
 
 
@@ -146,3 +143,69 @@ margin-top: 25px;
     transform: scale(1.1);
     transition: 0.3s ease-in-out;
 }
+
+
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Transparent black background */
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.popup-content input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.popup-content button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#sendMessage {
+    background: rgb(4, 69, 247);
+    color: white;
+}
+
+#closePopup {
+    background: rgb(200, 0, 0);
+    color: white;
+}
+
+#sendMessage:hover {
+    background: rgb(3, 54, 200);
+}
+
+#closePopup:hover {
+    background: rgb(150, 0, 0);
+}
+
+
