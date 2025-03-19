@@ -72,16 +72,25 @@ profilePic.addEventListener("click", () => {
     setTimeout(() => resetAnimation(profilePic), 200); // Reset after 200ms
 });
 
-// Select buttons
-const subscribeBtn = document.getElementById("subscribeBtn"); 
-const messageBtn = document.getElementById("messageBtn");
+// Function to reset animation
+function resetAnimation(element) {
+    element.style.transform = "none";
+}
 
-subscribeBtn.addEventListener("click", () => {
-    subscribeBtn.style.transform = "scale(0.9)";
-    setTimeout(() => resetAnimation(subscribeBtn), 200);
+// Fix for profile picture getting stuck
+profilePic.addEventListener("click", () => {
+    profilePic.style.transform = "rotate(5deg) scale(1.1)";
+    setTimeout(() => resetAnimation(profilePic), 200);
 });
 
-messageBtn.addEventListener("click", () => {
-    messageBtn.style.transform = "scale(0.9)";
-    setTimeout(() => resetAnimation(messageBtn), 200);
+// Select all buttons with class "subscribe"
+const subscribeButtons = document.querySelectorAll(".subscribe");
+
+// Apply animation fix to each button
+subscribeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        button.style.transform = "scale(0.9)";
+        setTimeout(() => resetAnimation(button), 200);
+    });
 });
+
