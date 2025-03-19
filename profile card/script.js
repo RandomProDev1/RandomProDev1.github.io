@@ -60,3 +60,28 @@ window.addEventListener("load", () => {
     animateNumber(comments, 0, 40, 1200);
     animateNumber(shares, 0, 16, 800);
 });
+
+// Fix for buttons and profile pic animation getting stuck on mobile
+function resetAnimation(element) {
+    element.style.transform = "none";
+}
+
+// Profile Picture Click Animation Fix
+profilePic.addEventListener("click", () => {
+    profilePic.style.transform = "rotate(5deg) scale(1.1)";
+    setTimeout(() => resetAnimation(profilePic), 200); // Reset after 200ms
+});
+
+// Select buttons
+const subscribeBtn = document.getElementById("subscribeBtn"); 
+const messageBtn = document.getElementById("messageBtn");
+
+subscribeBtn.addEventListener("click", () => {
+    subscribeBtn.style.transform = "scale(0.9)";
+    setTimeout(() => resetAnimation(subscribeBtn), 200);
+});
+
+messageBtn.addEventListener("click", () => {
+    messageBtn.style.transform = "scale(0.9)";
+    setTimeout(() => resetAnimation(messageBtn), 200);
+});
